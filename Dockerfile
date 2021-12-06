@@ -1,8 +1,8 @@
-FROM postgres
+FROM postgres:14-apline
 
-MAINTAINER Nicolas Bös
+LABEL authors="Nicolas Bös,David Silverman"
 
-RUN apt-get update && apt-get install -y postgresql-contrib
+RUN apk update && apk add package -y postgresql-contrib
 
 ADD createExtension.sh /docker-entrypoint-initdb.d/
 RUN chmod 755 /docker-entrypoint-initdb.d/createExtension.sh
